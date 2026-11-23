@@ -10,6 +10,28 @@
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+
+<!-- Inline SVG icon set (Material-style paths, defined once, used via <use>) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="icon-phone" viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></symbol>
+    <symbol id="icon-phone-incoming" viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/><path d="M23 3h-6.5v2h3.79L15.5 9.79l1.41 1.41L21.7 6.41V10H23.7V3H23z" transform="translate(-1.2 -0.6) scale(0.92)"/></symbol>
+    <symbol id="icon-phone-down" viewBox="0 0 24 24"><path d="M12 9c-1.6 0-3.22.25-4.75.72v3.1c0 .39-.23.74-.56.9-.98.49-1.96 1.03-2.75 1.65-.78.61-1.69.42-2.28-.29L.29 13.87C-.2 13.28-.17 12.44.28 11.9 1.83 10.05 3.9 8.7 6.4 7.94 8.18 7.4 10.05 7.1 12 7.1c1.95 0 3.82.3 5.6.84 2.5.76 4.57 2.11 6.12 3.96.45.54.48 1.38-.01 1.97l-1.37 1.65c-.59.71-1.5.9-2.28.29-.79-.62-1.77-1.16-2.75-1.65-.33-.16-.56-.51-.56-.9v-3.1C15.22 9.25 13.6 9 12 9z"/></symbol>
+    <symbol id="icon-mic" viewBox="0 0 24 24"><path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3zm5-3c0 3-2.54 5.1-5 5.1S7 14 7 11H5c0 3.41 2.72 6.23 6 6.72V21h2v-3.28c3.28-.49 6-3.31 6-6.72h-2z"/></symbol>
+    <symbol id="icon-mic-off" viewBox="0 0 24 24"><path d="M19 11h-1.7c0 .74-.16 1.43-.43 2.05l1.23 1.23c.56-.98.9-2.09.9-3.28zm-4.17.17c0-.06.02-.11.02-.17V5c0-1.66-1.34-3-3-3-.43 0-.84.09-1.21.25l3.19 3.19v5.75zM4.27 3L3 4.27l6 6V11c0 .61.29 1.14.71 1.5L9 13.22c-.53-.41-.87-1.03-.87-1.72V10.7L4.27 3zM12 14c-.48 0-.93-.1-1.34-.27l1.6 1.6c-.17.01-.34.03-.51.03-2.47 0-4.52-1.8-4.93-4.15-.08-.49-.51-.85-1-.85-.64 0-1.09.45-1.09 1.09 0 .02 0 .03.01.05C5.36 16.18 8.4 19.05 11 19.42V21c0 .55.45 1 1 1s1-.45 1-1v-1.58c.91-.13 1.81-.48 2.66-1l1.74 1.74L17.66 19 4.27 3z"/></symbol>
+    <symbol id="icon-volume" viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></symbol>
+    <symbol id="icon-volume-off" viewBox="0 0 24 24"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/></symbol>
+    <symbol id="icon-chat" viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></symbol>
+    <symbol id="icon-send" viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></symbol>
+    <symbol id="icon-search" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></symbol>
+    <symbol id="icon-close" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></symbol>
+    <symbol id="icon-check" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></symbol>
+    <symbol id="icon-trash" viewBox="0 0 24 24"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/></symbol>
+    <symbol id="icon-chevron-down" viewBox="0 0 24 24"><path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"/></symbol>
+    <symbol id="icon-copy" viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></symbol>
+  </defs>
+</svg>
+
 <header class="site-header">
   <div class="brand">
     <div class="brand-mark" aria-hidden="true">TSG</div>
@@ -19,16 +41,18 @@
     </div>
   </div>
   <div class="header-actions">
-    <button id="btnCall" class="btn btn-primary" type="button">Call Receptionist</button>
-    <button id="btnIncoming" class="btn btn-outline" type="button">Receptionist calls you</button>
+    <button id="btnCall" class="btn btn-primary" type="button"><svg class="icon"><use href="#icon-phone"/></svg><span>Call Receptionist</span></button>
+    <button id="btnIncoming" class="btn btn-outline" type="button"><svg class="icon"><use href="#icon-phone-incoming"/></svg><span>Receptionist calls you</span></button>
+    <button id="btnVoiceChat" class="btn btn-outline" type="button"><svg class="icon"><use href="#icon-chat"/></svg><span>Voice Chat</span></button>
+    <button id="btnSoundToggle" class="icon-btn" type="button" aria-pressed="true" aria-label="Toggle sounds" title="Sounds on/off"><svg class="icon"><use id="soundToggleUse" href="#icon-volume"/></svg></button>
   </div>
 </header>
 
 <main>
   <section class="hero card">
     <h2>Welcome to TwoSide Group</h2>
-    <p>Speak with our receptionist right here in your browser. She can answer general questions, take your details for a meeting or a service, and pass everything to the Chairman for follow-up.</p>
-    <p class="muted">Voice calls work best in Chrome on a laptop. A typed option is always available if you prefer not to use the microphone.</p>
+    <p>Speak with our receptionist right here in your browser. She talks naturally, answers general questions, takes your details for a meeting or a service, and passes everything to the Chairman for follow-up.</p>
+    <p class="muted">Voice works best in Chrome on a laptop. A typed option is always available if you prefer not to use the microphone.</p>
   </section>
 
   <!-- Consent disclosure -->
@@ -40,8 +64,8 @@
       <p class="muted">The receptionist speaks only after you start or accept a call.</p>
     </div>
     <div class="row-actions">
-      <button id="btnConsentStart" class="btn btn-primary" type="button">Start call</button>
-      <button id="btnConsentCancel" class="btn btn-ghost" type="button">Cancel</button>
+      <button id="btnConsentStart" class="btn btn-primary" type="button"><svg class="icon"><use href="#icon-phone"/></svg><span>Start call</span></button>
+      <button id="btnConsentCancel" class="btn btn-ghost" type="button"><svg class="icon"><use href="#icon-close"/></svg><span>Cancel</span></button>
     </div>
   </section>
 
@@ -51,11 +75,17 @@
     <div class="avatar avatar-pulsing" aria-hidden="true">TSG</div>
     <h2 id="incomingTitle">TwoSide Group Receptionist</h2>
     <p class="muted light">In-browser call — not a carrier phone call</p>
-    <p class="muted light">Your speech is transcribed by your browser's speech service (Google in Chrome). No voice recording is kept, and a type-instead path is always available on the call.</p>
+    <p class="muted light small">Your speech is transcribed by your browser's speech service (Google in Chrome). No voice recording is kept, and a type-instead path is always available on the call.</p>
     <p class="ringing-text">Ringing&hellip;</p>
     <div class="incoming-actions">
-      <button id="btnDecline" class="btn btn-decline" type="button">Decline</button>
-      <button id="btnAccept" class="btn btn-accept" type="button">Accept</button>
+      <div class="call-action">
+        <button id="btnDecline" class="round-btn round-decline" type="button" aria-label="Decline call"><svg class="icon"><use href="#icon-phone-down"/></svg></button>
+        <span>Decline</span>
+      </div>
+      <div class="call-action">
+        <button id="btnAccept" class="round-btn round-accept" type="button" aria-label="Accept call"><svg class="icon"><use href="#icon-phone"/></svg></button>
+        <span>Accept</span>
+      </div>
     </div>
   </section>
 
@@ -65,14 +95,14 @@
       <div class="avatar" aria-hidden="true">TSG</div>
       <div>
         <h2 id="callTitle">TwoSide Group Receptionist</h2>
-        <p class="call-status"><span id="callStatus">Connecting&hellip;</span> &middot; <span id="callTimer">0:00</span></p>
+        <p class="call-status"><span id="callStatus">Calling&hellip;</span> &middot; <span id="callTimer">0:00</span></p>
       </div>
     </div>
 
     <div class="waveform" id="waveform" aria-hidden="true">
       <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
     </div>
-    <p id="listeningIndicator" class="listening">Listening&hellip;</p>
+    <p id="listeningIndicator" class="listening">Calling&hellip;</p>
 
     <div id="transcript" class="transcript" aria-live="polite" aria-label="Call transcript"></div>
 
@@ -81,23 +111,62 @@
     <form id="typedForm" class="typed-form">
       <label class="sr-only" for="typedInput">Type your reply</label>
       <input id="typedInput" type="text" placeholder="Type your reply here&hellip;" autocomplete="off">
-      <button class="btn btn-primary" type="submit">Send</button>
+      <button class="icon-btn icon-btn-primary" type="submit" aria-label="Send typed reply"><svg class="icon"><use href="#icon-send"/></svg></button>
     </form>
 
     <div class="call-controls">
-      <button id="btnMute" class="btn btn-control" type="button" aria-pressed="false">Mute</button>
-      <button id="btnSpeaker" class="btn btn-control" type="button" aria-pressed="true">Speaker on</button>
-      <button id="btnEndCall" class="btn btn-end" type="button">End Call</button>
+      <div class="call-action">
+        <button id="btnMute" class="round-btn round-neutral" type="button" aria-pressed="false" aria-label="Mute microphone"><svg class="icon"><use id="muteUse" href="#icon-mic"/></svg></button>
+        <span id="muteLabel">Mute</span>
+      </div>
+      <div class="call-action">
+        <button id="btnSpeaker" class="round-btn round-neutral" type="button" aria-pressed="true" aria-label="Toggle speaker"><svg class="icon"><use id="speakerUse" href="#icon-volume"/></svg></button>
+        <span id="speakerLabel">Speaker</span>
+      </div>
+      <div class="call-action">
+        <button id="btnEndCall" class="round-btn round-end" type="button" aria-label="End call"><svg class="icon"><use href="#icon-phone-down"/></svg></button>
+        <span>End</span>
+      </div>
     </div>
   </section>
 
-  <!-- Post-call update -->
+  <!-- Voice chat -->
+  <section id="chatScreen" class="screen card chat hidden" aria-labelledby="chatTitle">
+    <div class="chat-head">
+      <div class="chat-head-left">
+        <div class="avatar avatar-small" aria-hidden="true">TSG</div>
+        <div>
+          <h2 id="chatTitle">Voice Chat</h2>
+          <p class="muted small">Chat by typing or talking — replies are spoken aloud when the speaker is on.</p>
+        </div>
+      </div>
+      <div class="chat-head-actions">
+        <button id="chatSpeakerBtn" class="icon-btn" type="button" aria-pressed="true" aria-label="Toggle spoken replies in chat" title="Spoken replies on/off"><svg class="icon"><use id="chatSpeakerUse" href="#icon-volume"/></svg></button>
+        <button id="btnEndChat" class="btn btn-outline btn-small" type="button"><svg class="icon"><use href="#icon-check"/></svg><span>End &amp; save</span></button>
+      </div>
+    </div>
+
+    <p class="consent-note">Before you use the microphone: your speech is transcribed by your browser's speech service — in Chrome, that service is provided by Google. No voice recording is kept by TwoSide Group. Typing is always available instead.</p>
+    <p id="chatMicNote" class="mic-note hidden"></p>
+
+    <div id="chatMessages" class="chat-messages" aria-live="polite" aria-label="Voice chat messages"></div>
+
+    <form id="chatForm" class="chat-form">
+      <label class="sr-only" for="chatInput">Type a message</label>
+      <input id="chatInput" type="text" placeholder="Type a message&hellip;" autocomplete="off">
+      <button id="chatMicBtn" class="icon-btn icon-btn-mic" type="button" aria-pressed="false" aria-label="Talk — tap to start or stop listening" title="Talk"><svg class="icon"><use id="chatMicUse" href="#icon-mic"/></svg></button>
+      <button class="icon-btn icon-btn-primary" type="submit" aria-label="Send message"><svg class="icon"><use href="#icon-send"/></svg></button>
+    </form>
+    <p id="chatListening" class="listening light-listening hidden">Listening&hellip; tap the microphone again to stop.</p>
+  </section>
+
+  <!-- Post-conversation update -->
   <section id="updateSection" class="card hidden" aria-labelledby="updateTitle">
     <h2 id="updateTitle" class="sr-only">New receptionist update</h2>
     <pre id="updateText" class="update-text"></pre>
     <div class="row-actions">
-      <button id="btnCopyUpdate" class="btn btn-outline" type="button">Copy update</button>
-      <button id="btnDismissUpdate" class="btn btn-ghost" type="button">Dismiss</button>
+      <button id="btnCopyUpdate" class="btn btn-outline" type="button"><svg class="icon"><use href="#icon-copy"/></svg><span>Copy update</span></button>
+      <button id="btnDismissUpdate" class="btn btn-ghost" type="button"><svg class="icon"><use href="#icon-close"/></svg><span>Dismiss</span></button>
     </div>
   </section>
 
@@ -106,11 +175,12 @@
     <div class="log-head">
       <h2 id="logTitle">Receptionist Call &amp; Lead Log</h2>
       <div class="search-wrap">
+        <svg class="icon search-icon"><use href="#icon-search"/></svg>
         <label class="sr-only" for="searchInput">Search log</label>
         <input id="searchInput" type="search" placeholder="Search name, number, summary&hellip;">
       </div>
     </div>
-    <p id="logEmpty" class="empty-state">No conversations logged yet. Calls you handle here will appear in this log.</p>
+    <p id="logEmpty" class="empty-state">No conversations logged yet. Calls and voice chats you handle here will appear in this log.</p>
     <div class="table-wrap">
       <table id="logTable" class="log-table hidden">
         <thead>
@@ -151,7 +221,7 @@
 </main>
 
 <footer class="site-footer">
-  <p>TwoSide Group — AI Receptionist. Voice calls run in your browser; no voice recording is kept.</p>
+  <p>TwoSide Group — AI Receptionist. Voice runs in your browser; no voice recording is kept.</p>
 </footer>
 
 <script src="app.js"></script>
