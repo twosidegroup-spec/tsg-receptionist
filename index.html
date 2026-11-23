@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TwoSide Group — AI Receptionist</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="brand">
+    <div class="brand-mark" aria-hidden="true">TSG</div>
+    <div>
+      <h1>TwoSide Group — AI Receptionist</h1>
+      <p class="tagline">Two Worlds. One Group.</p>
+    </div>
+  </div>
+  <div class="header-actions">
+    <button id="btnCall" class="btn btn-primary" type="button">Call Receptionist</button>
+    <button id="btnIncoming" class="btn btn-outline" type="button">Receptionist calls you</button>
+  </div>
+</header>
+
+<main>
+  <section class="hero card">
+    <h2>Welcome to TwoSide Group</h2>
+    <p>Speak with our receptionist right here in your browser. She can answer general questions, take your details for a meeting or a service, and pass everything to the Chairman for follow-up.</p>
+    <p class="muted">Voice calls work best in Chrome on a laptop. A typed option is always available if you prefer not to use the microphone.</p>
+  </section>
+
+  <!-- Consent disclosure -->
+  <section id="consentScreen" class="screen card hidden" aria-labelledby="consentTitle">
+    <h2 id="consentTitle">Before the call starts</h2>
+    <div class="consent-box">
+      <p>Your speech is transcribed by your browser's speech service — in Chrome, that service is provided by Google. No voice recording is kept by TwoSide Group.</p>
+      <p>A type-instead path is always available: if the microphone is unavailable or you decline permission, you can type your side of the conversation instead.</p>
+      <p class="muted">The receptionist speaks only after you start or accept a call.</p>
+    </div>
+    <div class="row-actions">
+      <button id="btnConsentStart" class="btn btn-primary" type="button">Start call</button>
+      <button id="btnConsentCancel" class="btn btn-ghost" type="button">Cancel</button>
+    </div>
+  </section>
+
+  <!-- Incoming call -->
+  <section id="incomingScreen" class="screen incoming hidden" aria-labelledby="incomingTitle">
+    <p class="incoming-label">INCOMING CALL &middot; IN BROWSER</p>
+    <div class="avatar avatar-pulsing" aria-hidden="true">TSG</div>
+    <h2 id="incomingTitle">TwoSide Group Receptionist</h2>
+    <p class="muted light">In-browser call — not a carrier phone call</p>
+    <p class="muted light">Your speech is transcribed by your browser's speech service (Google in Chrome). No voice recording is kept, and a type-instead path is always available on the call.</p>
+    <p class="ringing-text">Ringing&hellip;</p>
+    <div class="incoming-actions">
+      <button id="btnDecline" class="btn btn-decline" type="button">Decline</button>
+      <button id="btnAccept" class="btn btn-accept" type="button">Accept</button>
+    </div>
+  </section>
+
+  <!-- Active call -->
+  <section id="callScreen" class="screen call hidden" aria-labelledby="callTitle">
+    <div class="call-top">
+      <div class="avatar" aria-hidden="true">TSG</div>
+      <div>
+        <h2 id="callTitle">TwoSide Group Receptionist</h2>
+        <p class="call-status"><span id="callStatus">Connecting&hellip;</span> &middot; <span id="callTimer">0:00</span></p>
+      </div>
+    </div>
+
+    <div class="waveform" id="waveform" aria-hidden="true">
+      <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+    </div>
+    <p id="listeningIndicator" class="listening">Listening&hellip;</p>
+
+    <div id="transcript" class="transcript" aria-live="polite" aria-label="Call transcript"></div>
+
+    <p id="micNote" class="mic-note hidden"></p>
+
+    <form id="typedForm" class="typed-form">
+      <label class="sr-only" for="typedInput">Type your reply</label>
+      <input id="typedInput" type="text" placeholder="Type your reply here&hellip;" autocomplete="off">
+      <button class="btn btn-primary" type="submit">Send</button>
+    </form>
+
+    <div class="call-controls">
+      <button id="btnMute" class="btn btn-control" type="button" aria-pressed="false">Mute</button>
+      <button id="btnSpeaker" class="btn btn-control" type="button" aria-pressed="true">Speaker on</button>
+      <button id="btnEndCall" class="btn btn-end" type="button">End Call</button>
+    </div>
+  </section>
+
+  <!-- Post-call update -->
+  <section id="updateSection" class="card hidden" aria-labelledby="updateTitle">
+    <h2 id="updateTitle" class="sr-only">New receptionist update</h2>
+    <pre id="updateText" class="update-text"></pre>
+    <div class="row-actions">
+      <button id="btnCopyUpdate" class="btn btn-outline" type="button">Copy update</button>
+      <button id="btnDismissUpdate" class="btn btn-ghost" type="button">Dismiss</button>
+    </div>
+  </section>
+
+  <!-- Log -->
+  <section class="card" aria-labelledby="logTitle">
+    <div class="log-head">
+      <h2 id="logTitle">Receptionist Call &amp; Lead Log</h2>
+      <div class="search-wrap">
+        <label class="sr-only" for="searchInput">Search log</label>
+        <input id="searchInput" type="search" placeholder="Search name, number, summary&hellip;">
+      </div>
+    </div>
+    <p id="logEmpty" class="empty-state">No conversations logged yet. Calls you handle here will appear in this log.</p>
+    <div class="table-wrap">
+      <table id="logTable" class="log-table hidden">
+        <thead>
+          <tr>
+            <th scope="col">Date</th>
+            <th scope="col">Name</th>
+            <th scope="col">Number</th>
+            <th scope="col">Summary</th>
+            <th scope="col">Urgency</th>
+            <th scope="col">Status</th>
+            <th scope="col"><span class="sr-only">Actions</span></th>
+          </tr>
+        </thead>
+        <tbody id="logBody"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- Playbook -->
+  <section class="card playbook" aria-labelledby="playbookTitle">
+    <h2 id="playbookTitle">Receptionist Playbook</h2>
+    <h3>Greeting</h3>
+    <p class="greeting">&ldquo;Hello, thank you for reaching out to TwoSide Group. How can I help you today?&rdquo;</p>
+    <h3>Capture steps — one at a time</h3>
+    <ol>
+      <li>Full name</li>
+      <li>Phone number or WhatsApp number</li>
+      <li>Exact reason for reaching out, and preferred time</li>
+    </ol>
+    <p>Then confirm the details are noted and that the Chairman will follow up shortly. Urgent callers are flagged as High Priority.</p>
+    <h3>Safety rules</h3>
+    <ul>
+      <li>Never promise discounts, sign agreements, send external emails, or share personal contact details without the Chairman's explicit permission.</li>
+      <li>Never guess prices, promises, or policies that are not known — the Chairman confirms pricing on follow-up.</li>
+      <li>Keep replies short, clear, and conversational — 1 to 3 sentences at a time.</li>
+    </ul>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <p>TwoSide Group — AI Receptionist. Voice calls run in your browser; no voice recording is kept.</p>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
